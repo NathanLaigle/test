@@ -5,7 +5,7 @@ const headers = require('./utils/headers');
 const dbConnect = require('./utils/dbConnet');
 
 // Routers
-const uploadFileRoutes = require('./routes/uploadFileRoutes');
+const appRoutes = require('./routes/appRoutes');
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(headers);
 
 app.use(express.json());
 
-app.use('/upload', uploadFileRoutes);
+app.use('/upload', appRoutes);
 
 dbConnect(app);

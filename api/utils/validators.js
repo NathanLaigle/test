@@ -17,3 +17,5 @@ exports.fileUploadPost = [
   body('name').isString().optional(),
   body('comment').isString().optional(),
 ];
+
+exports.fileUploadDelete = [body('id').isString()];
