@@ -1,5 +1,6 @@
 const sequelize = require('./database');
 const App = require('../models/App');
+const relations = require('./dbRelations');
 
 /**
  *
@@ -10,6 +11,7 @@ const App = require('../models/App');
  */
 module.exports = async (app, port = 3000) => {
   try {
+    relations();
     await sequelize.sync();
     console.log('Database connection established');
     app.listen(port);
