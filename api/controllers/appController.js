@@ -28,7 +28,7 @@ exports.get = async (req, res, next) => {
  *
  * @description Upload a file
  */
-exports.post = (req, res, next) => {
+exports.post = async (req, res, next) => {
   // data validation + file extension validation
   const error = validationResult(req);
   if (!error.isEmpty() || !fileExtensionValidation(req.files.app, 'apk')) {
@@ -37,12 +37,12 @@ exports.post = (req, res, next) => {
       error: error.length > 0 ? error : 'Uploaded file must be a .apk file',
     });
   }
-  // if data is valid
-  const file = req.files.app;
-  file.name = file.name.replace(/\s+/g, '-').toLowerCase();
-  // create file in "uploads" folder
   try {
-    file.mv('./uploads/' + file.name, async (err) => {
+    // if data is valid
+    const file = req.files.app;
+    const hashedId = await bcrypt.hash(file.name, 10);
+    // create file in "uploads" folder
+    file.mv('./uploads/' + hashedId + '.apk', async (err) => {
       if (err) {
         next({
           message: 'File could not be uploaded',
@@ -50,7 +50,6 @@ exports.post = (req, res, next) => {
         });
       }
       // If the file is successfully created, a new entry will be added to the database.
-      const hashedId = await bcrypt.hash(file.name, 10);
       await App.create({
         id: hashedId,
         name: req.body.name || null,
@@ -121,7 +120,7 @@ exports.put = async (req, res, next) => {
       },
       { where: { id: req.body.id } }
     );
-    res.json('App updated');
+    res.json({ message: 'App updated' });
   } catch (error) {
     next({ error: error });
   }
