@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const { fileExtensionValidation } = require('../utils/validators');
+const App = require('../models/App');
 
 /**
  *
@@ -19,15 +20,27 @@ exports.post = (req, res, next) => {
   } else {
     // if data is valid
     const file = req.files.app;
-    file.mv('./uploads/' + file.name, (err) => {
-      if (err) {
+    file.mv('./uploads/' + file.name, async (err) => {
+      try {
+        if (err) {
+          res.json({
+            message: 'File could not be uploaded',
+            error: err,
+          });
+        } else {
+          await App.create({
+            id: file.name,
+            name: req.body.name || null,
+            comment: req.body.comment || null,
+          });
+          res.json({
+            message: 'File uploaded',
+          });
+        }
+      } catch (error) {
         res.json({
-          message: 'File could not be uploaded',
-          error: err,
-        });
-      } else {
-        res.json({
-          message: 'File uploaded',
+          message: 'something went wrong',
+          error: error,
         });
       }
     });

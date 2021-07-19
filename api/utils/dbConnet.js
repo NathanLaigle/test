@@ -10,7 +10,7 @@ const App = require('../models/App');
  */
 module.exports = async (app, port = 3000) => {
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log('Database connection established');
     app.listen(port);
   } catch (e) {

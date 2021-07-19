@@ -16,4 +16,13 @@ module.exports = db.define('App', {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  status: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: 'unverified',
+  },
+  status: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
