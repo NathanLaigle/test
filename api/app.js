@@ -1,5 +1,6 @@
 const express = require('express');
 const headers = require('./utils/headers');
+const dbConnect = require('./utils/dbConnet');
 
 const app = express();
 
@@ -11,4 +12,4 @@ app.use('/', (req, res) => {
   res.json({ cul: 'swag' });
 });
 
-app.listen(3000);
+dbConnect(app);
