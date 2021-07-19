@@ -8,6 +8,8 @@ const sequelize = new Sequelize('test-pradeo', 'root', 'root', {
   host: 'localhost',
 });
 
+exports.database = sequelize;
+
 /**
  *
  * @param {*} app | express app
@@ -15,12 +17,12 @@ const sequelize = new Sequelize('test-pradeo', 'root', 'root', {
  *
  * @description Create a database connexion with sequelize package
  */
-module.exports = async (app, port = 3000) => {
+exports.dbConnect = async (app, port = 3000) => {
   try {
     await sequelize.sync();
     console.log('Database connection established');
     app.listen(port);
-  } catch (error) {
+  } catch (e) {
     console.log(e);
   }
 };
