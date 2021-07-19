@@ -13,9 +13,15 @@ exports.fileExtensionValidation = (file, extension) => {
   return appName == extension;
 };
 
-exports.fileUploadPost = [
+exports.appPost = [
   body('name').isString().optional(),
   body('comment').isString().optional(),
 ];
 
-exports.fileUploadDelete = [body('id').isString()];
+exports.appDelete = [body('id').isString()];
+
+exports.appPut = [
+  body('id').isString(),
+  body('name').isString().optional(),
+  body('comment').isString().optional(),
+];

@@ -12,18 +12,23 @@ const router = Router();
 router.use(fileupload());
 
 /**
- * GET : /upload
+ * GET : /app
  */
 router.get('', appController.get);
 
 /**
- * POST : /upload
+ * POST : /app
  */
-router.post('', validators.fileUploadPost, appController.post);
+router.post('', validators.appPost, appController.post);
 
 /**
- * DELETE : /upload
+ * DELETE : /app
  */
-router.delete('', validators.fileUploadDelete, appController.delete);
+router.delete('', validators.appDelete, appController.delete);
+
+/**
+ * PUT : /app
+ */
+router.put('', validators.appPut, appController.put);
 
 module.exports = router;

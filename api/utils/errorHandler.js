@@ -1,6 +1,6 @@
-module.exports = (error, req, res) => {
+module.exports = (err, req, res, next) => {
   res.json({
-    message: error.message || 'Something went wrong',
-    error: error.error,
+    message: err.message || 'Something went wrong',
+    error: err.error,
   });
 };
