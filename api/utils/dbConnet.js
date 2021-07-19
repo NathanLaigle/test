@@ -1,14 +1,5 @@
-const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize('test-pradeo', 'root', 'root', {
-  dialect: 'mysql',
-  dialectOptions: {
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
-  },
-  host: 'localhost',
-});
-
-exports.database = sequelize;
+const sequelize = require('./database');
+const App = require('../models/App');
 
 /**
  *
@@ -17,7 +8,7 @@ exports.database = sequelize;
  *
  * @description Create a database connexion with sequelize package
  */
-exports.dbConnect = async (app, port = 3000) => {
+module.exports = async (app, port = 3000) => {
   try {
     await sequelize.sync();
     console.log('Database connection established');

@@ -1,19 +1,19 @@
 const Sequelize = require('sequelize');
 
-const { database } = require('../utils/dbConnect');
+const db = require('../utils/database');
 
-module.exports = database.define('App', {
+module.exports = db.define('App', {
   id: {
-    type: String,
+    type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true,
   },
   name: {
-    type: String,
+    type: Sequelize.STRING,
     allowNull: true,
   },
   comment: {
-    type: String,
+    type: Sequelize.STRING,
     allowNull: true,
   },
 });
