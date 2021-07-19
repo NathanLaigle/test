@@ -1,9 +1,16 @@
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ *
+ * @description get all users
+ */
 exports.get = async (req, res, next) => {
   try {
     const users = await User.findAll();
@@ -13,18 +20,24 @@ exports.get = async (req, res, next) => {
   }
 };
 
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ *
+ * @description Create a user
+ */
 exports.post = async (req, res, next) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
     next({ message: 'Invalid data', error: error });
   }
   try {
-    const userId = await bcrypt.hash(req.body.email, 10);
-    const userPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = await User.create({
-      id: userId,
       email: req.body.email,
-      password: userPassword,
+      password: hashedPassword,
     });
     res.json({
       message: 'User created',
@@ -35,6 +48,14 @@ exports.post = async (req, res, next) => {
   }
 };
 
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ *
+ * @description Delete a user
+ */
 exports.delete = async (req, res, next) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
@@ -43,7 +64,7 @@ exports.delete = async (req, res, next) => {
   try {
     await User.destroy({
       where: {
-        id: req.body.id,
+        email: req.body.email,
       },
     });
     res.json({ message: 'User deleted' });

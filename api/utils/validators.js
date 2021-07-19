@@ -28,4 +28,6 @@ exports.appPut = [
 
 exports.userPost = [body('email').isEmail(), body('password').isString()];
 
-exports.userDelete = [body('id').isString()];
+exports.userDelete = [body('email').isEmail()];
+
+exports.authPost = [body('email').isEmail(), body('password').isString()];
