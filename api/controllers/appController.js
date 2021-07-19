@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
+
 const { fileExtensionValidation } = require('../utils/validators');
 const App = require('../models/App');
 
@@ -50,7 +51,7 @@ exports.post = async (req, res, next) => {
         });
       }
       // If the file is successfully created, a new entry will be added to the database.
-      await App.create({
+      const app = await App.create({
         id: hashedId,
         name: req.body.name || null,
         comment: req.body.comment || null,
@@ -58,6 +59,7 @@ exports.post = async (req, res, next) => {
       });
       res.json({
         message: 'File uploaded',
+        app: app,
       });
     });
   } catch (error) {

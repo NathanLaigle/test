@@ -25,3 +25,7 @@ exports.appPut = [
   body('name').isString().optional(),
   body('comment').isString().optional(),
 ];
+
+exports.userPost = [body('email').isEmail(), body('password').isString()];
+
+exports.userDelete = [body('id').isString()];
