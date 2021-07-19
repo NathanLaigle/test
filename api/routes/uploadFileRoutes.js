@@ -12,6 +12,11 @@ const router = Router();
 router.use(fileupload());
 
 /**
+ * GET : /upload
+ */
+router.get('', uploadFileController.get);
+
+/**
  * POST : /upload
  */
 router.post('', validators.fileUploadPost, uploadFileController.post);

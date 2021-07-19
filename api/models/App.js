@@ -21,7 +21,7 @@ module.exports = db.define('App', {
     allowNull: false,
     defaultValue: 'unverified',
   },
-  status: {
+  path: {
     type: Sequelize.STRING,
     allowNull: false,
   },
