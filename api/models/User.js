@@ -8,6 +8,11 @@ module.exports = db.define('User', {
     allowNull: false,
     primaryKey: true,
   },
+  pseudo: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,

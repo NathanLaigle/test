@@ -3,6 +3,7 @@ const fileupload = require('express-fileupload');
 
 const appController = require('../controllers/appController');
 const validators = require('../utils/validators');
+const { isAuth } = require('../utils/auth');
 
 const router = Router();
 
@@ -19,16 +20,16 @@ router.get('', appController.get);
 /**
  * POST : /app
  */
-router.post('', validators.appPost, appController.post);
+router.post('', isAuth, validators.appPost, appController.post);
 
 /**
  * DELETE : /app
  */
-router.delete('', validators.appDelete, appController.delete);
+router.delete('', isAuth, validators.appDelete, appController.delete);
 
 /**
  * PUT : /app
  */
-router.put('', validators.appPut, appController.put);
+router.put('', isAuth, validators.appPut, appController.put);
 
 module.exports = router;

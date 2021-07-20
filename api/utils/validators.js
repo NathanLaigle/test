@@ -15,7 +15,7 @@ exports.fileExtensionValidation = (file, extension) => {
 
 exports.appPost = [
   body('name').isString().optional(),
-  body('comment').isString().optional(),
+  body('description').isString().optional(),
 ];
 
 exports.appDelete = [body('id').isString()];
@@ -23,10 +23,14 @@ exports.appDelete = [body('id').isString()];
 exports.appPut = [
   body('id').isString(),
   body('name').isString().optional(),
-  body('comment').isString().optional(),
+  body('description').isString().optional(),
 ];
 
-exports.userPost = [body('email').isEmail(), body('password').isString()];
+exports.userPost = [
+  body('email').isEmail(),
+  body('pseudo').isString(),
+  body('password').isString(),
+];
 
 exports.userDelete = [body('email').isEmail()];
 

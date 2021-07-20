@@ -11,10 +11,11 @@ module.exports = db.define('App', {
   name: {
     type: Sequelize.STRING,
     allowNull: true,
+    unique: true,
   },
-  comment: {
+  description: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   status: {
     type: Sequelize.STRING,

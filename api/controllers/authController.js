@@ -36,7 +36,7 @@ module.exports = async (req, res, next) => {
         error: 'Password given is invalid',
       });
     }
-    const token = jwt.sign(user.email, secret);
+    const token = jwt.sign({ email: user.email, pseudo: user.pseudo }, secret);
     res.json({
       email: user.email,
       token: token,

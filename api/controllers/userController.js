@@ -13,7 +13,11 @@ const User = require('../models/User');
  */
 exports.get = async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: {
+        exclude: ['password'],
+      },
+    });
     res.json(users);
   } catch (error) {
     next({ message: 'Could not find users', error: error });
@@ -37,8 +41,10 @@ exports.post = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = await User.create({
       email: req.body.email,
+      pseudo: req.body.pseudo,
       password: hashedPassword,
     });
+    user.password = '***';
     res.json({
       message: 'User created',
       user: user,
