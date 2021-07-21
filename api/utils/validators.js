@@ -35,3 +35,10 @@ exports.userPost = [
 exports.userDelete = [body('email').isEmail()];
 
 exports.authPost = [body('email').isEmail(), body('password').isString()];
+
+exports.commentPost = [
+  body('rating').custom((value) => value >= 0 && value <= 5),
+  body('title').isString().optional(),
+  body('content').isString().optional(),
+  body('AppId').isString(),
+];

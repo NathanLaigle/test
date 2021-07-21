@@ -62,7 +62,7 @@ exports.post = async (req, res, next) => {
       }
       // If the file is successfully created, a new entry will be added to the database.
       const app = await App.create({
-        id: hashedId,
+        id: hashedId.replace(/\//g, 'slash'),
         name: req.body.name,
         description: req.body.description || null,
         path: '/uploads/' + fileName,

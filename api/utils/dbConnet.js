@@ -12,7 +12,7 @@ const relations = require('./dbRelations');
 module.exports = async (app, port = 3000) => {
   try {
     relations();
-    await sequelize.sync({ force: true });
+    await sequelize.sync();
     console.log('Database connection established');
     app.listen(port);
   } catch (e) {
