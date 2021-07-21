@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const slugify = require('slugify');
 
 const { fileExtensionValidation } = require('../utils/validators');
+const fileHash = require('../utils/fileHash');
 const App = require('../models/App');
 
 /**
@@ -50,7 +51,7 @@ exports.post = async (req, res, next) => {
     }
     // if data is valid
     const file = req.files.app;
-    const hashedId = await bcrypt.hash(file.name, 10);
+    const hash = await fileHash(file);
     const fileName = slugify(req.body.name) + '.apk';
     // create file in "uploads" folder
     file.mv('./uploads/' + fileName, async (err) => {
@@ -62,7 +63,7 @@ exports.post = async (req, res, next) => {
       }
       // If the file is successfully created, a new entry will be added to the database.
       const app = await App.create({
-        id: hashedId.replace(/\//g, 'slash'),
+        id: hash,
         name: req.body.name,
         description: req.body.description || null,
         path: '/uploads/' + fileName,
