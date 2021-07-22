@@ -1,6 +1,7 @@
 const sequelize = require('./database');
 const App = require('../models/App');
 const relations = require('./dbRelations');
+const io = require('./socketIoConnection');
 
 /**
  *
@@ -14,7 +15,11 @@ module.exports = async (app, port = 3000) => {
     relations();
     await sequelize.sync();
     console.log('Database connection established');
-    app.listen(port);
+    const httpServer = app.listen(port);
+    io.init(httpServer);
+    io.getIo().on('connection', (socket) => {
+      console.log('client connected');
+    });
   } catch (e) {
     console.log(e);
   }

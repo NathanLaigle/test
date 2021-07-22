@@ -3,11 +3,9 @@ const axios = require('axios').default;
 
 const fileHash = require('../utils/fileHash');
 
-module.exports = async (req, res, next) => {
+module.exports = async (app) => {
   try {
-    const hash = await fileHash(
-      path.join(__dirname, '..', 'uploads', req.params.name)
-    );
+    const hash = await fileHash(path.join(__dirname, '..', app.path));
     const virusTotalKey =
       'dd76d04e1ce3cc99daa7507de33d6a0bbb546abdbf255dbe8d7e6d53e07e77ca';
     const virusTotalResponse = await axios.get(
@@ -19,7 +17,7 @@ module.exports = async (req, res, next) => {
         },
       }
     );
-    res.json(virusTotalResponse.data);
+    return virusTotalResponse.data;
   } catch (error) {
     next({
       message: 'Hashing computing failed',
