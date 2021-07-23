@@ -2,9 +2,10 @@ const CronJob = require('cron').CronJob;
 
 const App = require('../models/App');
 const vtHashCheck = require('../utils/virusTotalHashCheck');
+const io = require('../utils/socketIoConnection');
 
 // Every 4 min
-const job = new CronJob('* */20 * * * *', async () => {
+const job = new CronJob('* */4 * * * *', async () => {
   try {
     const apps = await App.findAll({
       where: {
@@ -20,7 +21,10 @@ const job = new CronJob('* */20 * * * *', async () => {
         await app.update({
           status: newStatus,
         });
-        console.log(app);
+        io.getIo().emit('updateFileStatus', {
+          appName: app.name,
+          appStatus: app.status,
+        });
       } catch (error) {
         console.log('An error occurred during the file check process');
       }

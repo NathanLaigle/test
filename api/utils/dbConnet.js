@@ -17,9 +17,6 @@ module.exports = async (app, port = 3000) => {
     console.log('Database connection established');
     const httpServer = app.listen(port);
     io.init(httpServer);
-    io.getIo().on('connection', (socket) => {
-      console.log('client connected');
-    });
   } catch (e) {
     console.log(e);
   }
