@@ -27,4 +27,8 @@ module.exports = db.define('App', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });

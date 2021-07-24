@@ -1,4 +1,5 @@
 const { body } = require('express-validator');
+const slugify = require('slugify');
 
 /**
  *
@@ -11,6 +12,17 @@ exports.fileExtensionValidation = (file, extension) => {
   let appName = file.name.split('.');
   appName = appName[appName.length - 1];
   return appName == extension;
+};
+
+exports.ImageValidation = (image) => {
+  if (
+    this.fileExtensionValidation(image, '.jpg') ||
+    this.fileExtensionValidation(image, '.jpeg') ||
+    this.fileExtensionValidation(image, '.png')
+  ) {
+    return false;
+  }
+  return slugify(image.name);
 };
 
 exports.appPost = [

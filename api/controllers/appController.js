@@ -4,7 +4,10 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const slugify = require('slugify');
 
-const { fileExtensionValidation } = require('../utils/validators');
+const {
+  fileExtensionValidation,
+  ImageValidation,
+} = require('../utils/validators');
 const fileHash = require('../utils/fileHash');
 const App = require('../models/App');
 
@@ -60,16 +63,34 @@ exports.post = async (req, res, next) => {
           error: err,
         });
       }
-      // If the file is successfully created, a new entry will be added to the database.
-      const app = await App.create({
-        name: req.body.name,
-        description: req.body.description || null,
-        path: '/uploads/' + fileName,
-        UserEmail: req.userEmail,
-      });
-      res.json({
-        message: 'File uploaded',
-        app: app,
+      // check image
+      const image = req.files.image;
+      const imgName = ImageValidation(image);
+      if (!imgName) {
+        next({
+          message: 'the app could not be uploaded ',
+          error: 'the image must be a .jpg, .jpeg or .png file',
+        });
+      }
+      image.mv('./uploads/appImages/' + imgName, async (err) => {
+        if (err) {
+          return next({
+            message: 'File could not be uploaded',
+            error: err,
+          });
+        }
+        // If the file is successfully created, a new entry will be added to the database.
+        const app = await App.create({
+          name: req.body.name,
+          description: req.body.description || null,
+          path: '/uploads/' + fileName,
+          image: './uploads/appImages/' + imgName,
+          UserEmail: req.userEmail,
+        });
+        res.json({
+          message: 'File uploaded',
+          app: app,
+        });
       });
     });
   } catch (error) {
