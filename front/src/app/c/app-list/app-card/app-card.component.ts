@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { App } from 'src/app/i/app';
+import { User } from 'src/app/i/user';
+import { UserService } from 'src/app/s/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,11 +10,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app-card.component.scss'],
 })
 export class AppCardComponent implements OnInit {
-  constructor() {}
+  constructor(private _user: UserService) {}
 
   @Input() app: App;
 
   apiUrl: string = environment.apiUrl;
 
-  ngOnInit(): void {}
+  author: User;
+
+  ngOnInit(): void {
+    this._user
+      .getOneUser(this.app.UserEmail)
+      .subscribe((data) => (this.author = data));
+  }
 }

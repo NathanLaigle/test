@@ -17,12 +17,9 @@ export class UserService {
     );
   }
 
-  getOneUser(): Observable<User> {
+  getOneUser(user: String = this._auth.getUser()?.email): Observable<User> {
     return this._http.get<User>(
-      environment.apiUrl +
-        environment.endPoints.user +
-        '/' +
-        this._auth.getUser()?.email,
+      environment.apiUrl + environment.endPoints.user + '/' + user,
       this._auth.setHeader()
     );
   }

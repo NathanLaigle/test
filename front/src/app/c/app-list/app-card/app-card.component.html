@@ -1,2 +1,10 @@
-<p>{{ app.name }}</p>
-<!-- <img [src]="apiUrl + app.image" [alt]="app.name" /> -->
+<div class="app-image">
+  <img [src]="apiUrl + app.image" [alt]="app.name" />
+  <div class="status">
+    <i class="ri-checkbox-blank-circle-fill ri-sm {{ app.status }}"></i>
+  </div>
+</div>
+<div class="app-data">
+  <h3>{{ app.name }}</h3>
+  <p>{{ author?.pseudo }}</p>
+</div>
