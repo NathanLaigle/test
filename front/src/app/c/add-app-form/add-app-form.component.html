@@ -21,13 +21,13 @@
         id="app-description"
         formControlName="description"
         placeholder="This is my first app"
-        rows="5"
       >
       </textarea>
     </fieldset>
     <fieldset>
-      <label for="add-app-description">Apk file</label>
+      <label for="add-app-file">Apk file</label>
       <input
+        id="add-app-file"
         formControlName="app"
         type="file"
         accept=".apk"
@@ -39,6 +39,22 @@
         Upload file
       </button>
       <p>{{ form.get("app").value }}</p>
+    </fieldset>
+    <fieldset>
+      <label for="add-app-image">App image</label>
+      <input
+        id="add-app-image"
+        formControlName="image"
+        type="file"
+        accept="image/png, image/jpeg, image/jpg"
+        #image
+        hidden
+        (change)="onLoadImage($event)"
+      />
+      <button type="button" (click)="image.click()" class="upload-button">
+        Upload file
+      </button>
+      <p>{{ form.get("image").value }}</p>
     </fieldset>
     <button>Upload</button>
   </form>

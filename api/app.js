@@ -10,6 +10,7 @@ const appRoutes = require('./routes/appRoutes');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const commentRoutes = require('./routes/commentRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 //cron
 const fileCheck = require('./cron/fileCheck');
@@ -24,6 +25,7 @@ app.use('/app', appRoutes);
 app.use('/user', userRoutes);
 app.use('/login', authRoutes);
 app.use('/comment', commentRoutes);
+app.use('/uploads', uploadRoutes);
 
 app.use(errorHandler);
 

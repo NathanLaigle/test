@@ -17,11 +17,16 @@ export class AddAppFormComponent implements OnInit {
 
   file: File;
 
+  image: File;
+
   errorMessage: string;
 
   ngOnInit(): void {
     this.form = new FormGroup({
       app: new FormControl(null, {
+        validators: [Validators.required],
+      }),
+      image: new FormControl(null, {
         validators: [Validators.required],
       }),
       name: new FormControl(null, {
@@ -43,6 +48,7 @@ export class AddAppFormComponent implements OnInit {
     upload.append('name', this.form.get('name').value);
     upload.append('description', this.form.get('description').value);
     upload.append('app', this.file, this.file.name);
+    upload.append('image', this.image, this.image.name);
 
     this._app.postApp(upload).subscribe((data: any) => {
       if (data.error) {
@@ -71,6 +77,16 @@ export class AddAppFormComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
         this.file = e.target.files[0];
+      };
+    }
+  }
+
+  onLoadImage(e): void {
+    const reader: FileReader = new FileReader();
+    if (e.target.files && e.target.files.length > 0) {
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+        this.image = e.target.files[0];
       };
     }
   }

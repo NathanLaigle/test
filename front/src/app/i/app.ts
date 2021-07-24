@@ -8,4 +8,5 @@ export interface App {
   updatedAt?: string;
   UserEmail?: string;
   app?: any;
+  image: string;
 }

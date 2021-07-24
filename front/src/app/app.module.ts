@@ -12,9 +12,22 @@ import { LoginFormComponent } from './c/login-form/login-form.component';
 import { MessageInfoComponent } from './c/message-info/message-info.component';
 import { RegisterFormComponent } from './c/register-form/register-form.component';
 import { AddAppFormComponent } from './c/add-app-form/add-app-form.component';
+import { AppListComponent } from './c/app-list/app-list.component';
+import { AppCardComponent } from './c/app-list/app-card/app-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MenuPictoComponent, ToolBarComponent, LoginFormComponent, MessageInfoComponent, RegisterFormComponent, AddAppFormComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    MenuPictoComponent,
+    ToolBarComponent,
+    LoginFormComponent,
+    MessageInfoComponent,
+    RegisterFormComponent,
+    AddAppFormComponent,
+    AppListComponent,
+    AppCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

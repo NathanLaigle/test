@@ -84,7 +84,7 @@ exports.post = async (req, res, next) => {
           name: req.body.name,
           description: req.body.description || null,
           path: '/uploads/' + fileName,
-          image: './uploads/appImages/' + imgName,
+          image: '/uploads/appImages/' + imgName,
           UserEmail: req.userEmail,
         });
         res.json({
