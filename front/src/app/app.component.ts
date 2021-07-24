@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
+import { UserService } from './s/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,10 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const socket = io('http://localhost:3000');
-    socket.connect();
-    socket.on('updateFileStatus', (socket) => {
-      console.log(socket);
-    });
+    // const socket = io('http://localhost:3000');
+    // socket.connect();
+    // socket.on('updateFileStatus', (socket) => {
+    //   console.log(socket);
+    // });
   }
 }

@@ -1,0 +1,15 @@
+.upload-button {
+  width: 100%;
+  margin-top: 1em;
+  background: transparent;
+  color: #000;
+  border: solid 0.1em rgb(150, 150, 150);
+  &:hover {
+    transform: none;
+  }
+}
+
+p {
+  margin-top: 1em;
+  font-size: 0.8em;
+}

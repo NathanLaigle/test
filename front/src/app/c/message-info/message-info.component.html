@@ -1,0 +1,11 @@
+<section *ngIf="message?.message">
+  <div class="message-box">
+    <div class="message-box__heading">
+      <h2>{{ message?.type }}</h2>
+      <button (click)="onCloseMessageBox()">
+        <i class="ri-close-line ri-xl"></i>
+      </button>
+    </div>
+    <p>{{ message?.message }}</p>
+  </div>
+</section>

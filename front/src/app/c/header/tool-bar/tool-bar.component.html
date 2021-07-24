@@ -1,0 +1,21 @@
+<div class="tool-bar-container">
+  <button *ngIf="userAuthStatus" (click)="onShowSideBar('app-add-app-form')">
+    <i class="ri-add-line ri-xl"></i>
+  </button>
+  <button *ngIf="!userAuthStatus" (click)="onShowSideBar('app-login-form')">
+    <i class="ri-user-4-line ri-xl"></i>
+  </button>
+  <button *ngIf="userAuthStatus" (click)="this._auth.logout()">
+    <i class="ri-logout-circle-r-line ri-xl"></i>
+  </button>
+</div>
+
+<app-login-form
+  (close)="onClose($event)"
+  (open)="onShowSideBar($event)"
+></app-login-form>
+<app-register-form
+  (close)="onClose($event)"
+  (open)="onShowSideBar($event)"
+></app-register-form>
+<app-add-app-form (close)="onClose($event)"></app-add-app-form>

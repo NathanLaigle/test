@@ -1,0 +1,43 @@
+@import "../../../assets/css/var.scss";
+
+section {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  padding: 0 2em;
+  animation: onShowMessage 0.5s ease-out forwards,
+    onHideMessage 0.5s 7.5s ease-in forwards;
+  .message-box {
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    box-shadow: 0 0 0.3em rgba($color: #000, $alpha: 0.2);
+    border-radius: $radius;
+    .message-box__heading {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8em;
+    }
+  }
+}
+
+@keyframes onShowMessage {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 2em;
+  }
+}
+
+@keyframes onHideMessage {
+  from {
+    bottom: 2em;
+  }
+  to {
+    bottom: -100%;
+  }
+}

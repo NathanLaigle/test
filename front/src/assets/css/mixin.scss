@@ -1,0 +1,5 @@
+@mixin responsive($breakPoint, $property, $value) {
+  @media (min-width: $breakPoint) {
+    #{$property}: $value;
+  }
+}

@@ -18,7 +18,7 @@ const app = express();
 
 app.use(headers);
 
-app.use(express.json());
+app.use(express.json({ limit: '60mb' }));
 
 app.use('/app', appRoutes);
 app.use('/user', userRoutes);

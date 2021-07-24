@@ -1,0 +1,42 @@
+<section class="side-bar">
+  <div class="side-bar__heading">
+    <h1>Connexion</h1>
+    <button (click)="onClose()">
+      <i class="ri-close-line ri-xl"></i>
+    </button>
+  </div>
+  <form [formGroup]="form" (submit)="onLogin()">
+    <fieldset>
+      <label for="login-form-email">Email</label>
+      <input
+        type="text"
+        formControlName="email"
+        placeholder="User email"
+        id="login-form-email"
+      />
+    </fieldset>
+    <fieldset>
+      <label for="login-form-password">Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="User password"
+        id="login-form-password"
+      />
+    </fieldset>
+    <button>Connection</button>
+    <p class="span-link">
+      you do not an account ?
+      <span (click)="onOpen('app-register-form'); onClose()">register</span>
+    </p>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">
+    <div class="error-message-heading">
+      <h2>Error</h2>
+      <button (click)="onCloseErrorMessage()">
+        <i class="ri-close-line ri-xl"></i>
+      </button>
+    </div>
+    <p>{{ errorMessage }}</p>
+  </div>
+</section>

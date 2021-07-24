@@ -1,0 +1,32 @@
+@import "../../../../assets/css/var.scss", "../../../../assets/css/mixin.scss";
+
+.tool-bar-container {
+  display: flex;
+  align-items: center;
+  button {
+    margin: 0 0.3em;
+  }
+  button:first-child {
+    margin: 0 0.3em 0 0;
+  }
+  button:last-child {
+    margin: 0 0 0 0.3em;
+  }
+}
+
+app-login-form,
+app-register-form,
+app-add-app-form {
+  transition: all 0.3s ease-out;
+  padding: $containerPadding;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 100vw;
+  @include responsive($md, width, 80vw);
+  @include responsive($lg, width, 60vw);
+  @include responsive($xl, width, 40vw);
+  background: #fff;
+  box-shadow: 0 0 6px rgba($color: #000, $alpha: 0.1);
+}

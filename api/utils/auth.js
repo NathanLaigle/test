@@ -26,8 +26,19 @@ exports.isAuth = (req, res, next) => {
   }
 };
 
-exports.isAllowed = (req, res, next) => {
+exports.isAllowedPost = (req, res, next) => {
   if (req.userEmail != req.body.email) {
+    res.json({
+      message: 'Authorisation denied',
+      error:
+        'You are not authorised to make this request. You are probably trying to update or delete content that you do not own.',
+    });
+  }
+  next();
+};
+
+exports.isAllowedGet = (req, res, next) => {
+  if (req.userEmail != req.params.email) {
     res.json({
       message: 'Authorisation denied',
       error:

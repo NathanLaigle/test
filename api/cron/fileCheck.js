@@ -5,7 +5,7 @@ const vtHashCheck = require('../utils/virusTotalHashCheck');
 const io = require('../utils/socketIoConnection');
 
 // Every 4 min
-const job = new CronJob('* */4 * * * *', async () => {
+const job = new CronJob('* * * * *', async () => {
   try {
     const apps = await App.findAll({
       where: {

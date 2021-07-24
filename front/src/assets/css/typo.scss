@@ -1,0 +1,42 @@
+@import "./var.scss", "./mixin.scss",
+  "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap";
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+textarea {
+  font-family: "Montserrat", sans-serif !important;
+  text-align: center;
+}
+
+$size: 1em;
+$sm-size: 1.1em;
+$md-size: 1.3em;
+$lg-size: 1.5em;
+$xl-size: 1.6em;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 500;
+  font-size: $size;
+  @include responsive($sm, font-size, $sm-size);
+  @include responsive($md, font-size, $md-size);
+  @include responsive($lg, font-size, $lg-size);
+  @include responsive($xl, font-size, $xl-size);
+}
+
+h1 {
+  font-weight: 700 !important;
+}
+
+p,
+span {
+  margin: 0;
+  font-weight: 400;
+}

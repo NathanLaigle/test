@@ -1,0 +1,27 @@
+section.side-bar {
+  position: relative;
+  height: 100%;
+  .side-bar__heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  form {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    input {
+      text-align: center;
+    }
+    .span-link {
+      margin-top: 1em;
+      text-align: center;
+      font-size: 0.8em;
+      span {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}

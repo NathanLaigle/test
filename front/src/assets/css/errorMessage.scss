@@ -1,0 +1,28 @@
+@import "./var.scss";
+
+.error-message {
+  position: absolute;
+  font-size: 0.8em;
+  width: 100%;
+  padding: 1.5em;
+  background: #fff;
+  border-radius: $radius;
+  box-shadow: 0 0 0.3em rgba($color: #000, $alpha: 0.2);
+  animation: onError 0.3s ease-out forwards;
+  .error-message-heading {
+    margin-bottom: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@keyframes onError {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
+  }
+}

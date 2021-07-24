@@ -30,12 +30,33 @@ exports.get = async (req, res, next) => {
  * @param {*} res
  * @param {*} next
  *
+ * @description Get one user by PK (email).
+ */
+exports.getOne = async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.email, {
+      attributes: {
+        exclude: ['password'],
+      },
+    });
+    res.json(user);
+  } catch (error) {
+    next({ message: 'Could not find a user', error: error });
+  }
+};
+
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ *
  * @description Create a user
  */
 exports.post = async (req, res, next) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
-    next({ message: 'Invalid data', error: error });
+    return next({ message: 'Invalid data', error: error });
   }
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
