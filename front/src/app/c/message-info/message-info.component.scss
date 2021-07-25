@@ -1,6 +1,7 @@
 @import "../../../assets/css/var.scss";
 
 section {
+  z-index: 20;
   position: fixed;
   background: #fff;
   width: 100%;

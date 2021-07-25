@@ -4,9 +4,8 @@
 section {
   margin: 1em 0;
   @include responsive($sm, margin, 0);
-  padding: $containerPadding;
-  box-shadow: 0 0 0.3em rgba($color: #000, $alpha: 0.1);
-  border-radius: $radius;
+  padding: 1em 0;
+  border-top: solid 0.1em rgb(180, 180, 180);
   .heading {
     margin-bottom: 0.8em;
     display: flex;

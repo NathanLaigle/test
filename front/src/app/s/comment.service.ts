@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Comment } from '../i/comment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommentService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private _auth: AuthService) {}
 
   /**
    * Comments observer
    */
-  comments: Array<Comment> = null;
-  commentsSubject: BehaviorSubject<Array<Comment>> = new BehaviorSubject(
-    this.comments
-  );
+  private comments: Array<Comment> = null;
+  private commentsSubject: BehaviorSubject<Array<Comment>> =
+    new BehaviorSubject(this.comments);
   commentsObs: Observable<Array<Comment>> = this.commentsSubject.asObservable();
 
   /**
@@ -40,7 +40,8 @@ export class CommentService {
   postComment(comment: Comment): Observable<Array<Comment>> {
     return this._http.post<Array<Comment>>(
       environment.apiUrl + environment.endPoints.comment,
-      comment
+      comment,
+      this._auth.setHeader()
     );
   }
 }

@@ -17,6 +17,7 @@ import { AppCardComponent } from './c/app-list/app-card/app-card.component';
 import { HeroComponent } from './c/hero/hero.component';
 import { AppDetailsComponent } from './c/app-list/app-details/app-details.component';
 import { CommentComponent } from './c/app-list/app-details/comment/comment.component';
+import { CommentFormComponent } from './c/app-list/app-details/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CommentComponent } from './c/app-list/app-details/comment/comment.compo
     HeroComponent,
     AppDetailsComponent,
     CommentComponent,
+    CommentFormComponent,
   ],
   imports: [
     BrowserModule,

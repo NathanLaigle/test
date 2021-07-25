@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmitCommentForm()">
+  <fieldset>
+    <label for="comment-rating">Rating</label>
+    <input type="number" id="comment-rating" formControlName="rating" />
+  </fieldset>
+  <fieldset>
+    <label for="comment-title">Title</label>
+    <input type="text" id="comment-title" formControlName="title" />
+  </fieldset>
+  <fieldset>
+    <label for="comment-content">Content</label>
+    <textarea formControlName="content" id="comment-content"></textarea>
+  </fieldset>
+  <button>Comment</button>
+</form>

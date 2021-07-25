@@ -19,6 +19,7 @@
 </section>
 
 <section class="content">
+  <p class="description-title">Description</p>
   <p class="description">{{ app?.description }}</p>
   <a
     [href]="apiUrl + app?.path"
@@ -26,9 +27,29 @@
     hidden
     #download
   ></a>
-  <button class="download" (click)="download.click()">
-    Download {{ app?.name }}
-  </button>
+  <div class="control">
+    <div class="button-box">
+      <button class="download" (click)="download.click()">
+        <i class="ri-download-line ri-xl"></i>
+      </button>
+      <p>
+        Download <br />
+        {{ app?.name }}
+      </p>
+    </div>
+    <div class="button-box" *ngIf="userStatus">
+      <button class="comment" (click)="onShowCommentForm()">
+        <i class="ri-chat-3-line ri-xl"></i>
+      </button>
+      <p>
+        Leave a <br />
+        Comment
+      </p>
+    </div>
+  </div>
+  <div class="comment-form-box">
+    <app-comment-form [appObs]="appObs"></app-comment-form>
+  </div>
   <app-comment
     [comment]="comment"
     *ngFor="let comment of comments"

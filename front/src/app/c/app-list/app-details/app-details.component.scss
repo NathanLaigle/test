@@ -70,10 +70,6 @@ section.heading {
 
 section.content {
   margin: 1.5em 0;
-  @include responsive($sm, display, grid);
-  @include responsive($sm, grid-template-columns, 1fr 1fr);
-  @include responsive($sm, gap, 1em);
-  @include responsive($sm, place-content, start);
 
   .description {
     margin: 1em 0;
@@ -81,16 +77,53 @@ section.content {
     color: rgb(150, 150, 150);
   }
 
-  button.download {
-    // background: #000;
-    // color: #fff;
-    transform: none;
-    border: solid 0.1em #000;
-    border-radius: $radius;
-    width: 100%;
-    margin-top: 1em;
-    @include responsive($sm, margin-top, 0);
-    justify-content: center;
-    padding: 1em;
+  .control {
+    margin: 3em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .button-box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      p {
+        margin-top: 0.8em;
+        font-size: 0.6em;
+        text-align: center;
+      }
+      button.download,
+      button.comment {
+        border-radius: 50%;
+        width: 5em;
+        height: 5em;
+        @include responsive($sm, margin-top, 0);
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+      }
+      button.download {
+        background: #000;
+        color: #fff;
+      }
+      button.comment {
+        background: #fff;
+        border: solid 0.1em #000;
+      }
+    }
   }
+}
+
+section.comment-form {
+  margin-top: 0.8em;
+  p {
+    font-size: 0.8em;
+    text-decoration: underline;
+    margin-bottom: 0.8em;
+  }
+}
+
+.comment-form-box {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
 }
