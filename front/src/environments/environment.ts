@@ -8,6 +8,7 @@ export const environment = {
   endPoints: {
     user: '/user',
     app: '/app',
+    comment: '/comment',
   },
 };
 

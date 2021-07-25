@@ -9,7 +9,7 @@
 
 <div class="app-details-container" (click)="onShowAppDetails()">
   <app-app-details
-    [app]="currentApp"
+    [appObs]="appObs"
     (close)="onShowAppDetails()"
     (click)="$event.stopPropagation()"
   ></app-app-details>
