@@ -12,6 +12,6 @@ router.get('/appImages/:image', uploadController.getImage);
 /**
  * GET : /uploads/:app
  */
-router.get('', uploadController.getApp);
+router.get('/:app', uploadController.getApp);
 
 module.exports = router;
