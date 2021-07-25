@@ -14,7 +14,7 @@ router.get('', userController.get);
 /**
  * GET : /user
  */
-router.get('/:email', isAuth, isAllowedGet, userController.getOne);
+router.get('/:email', userController.getOne);
 
 /**
  * POST : /user

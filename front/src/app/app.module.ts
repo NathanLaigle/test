@@ -14,6 +14,8 @@ import { RegisterFormComponent } from './c/register-form/register-form.component
 import { AddAppFormComponent } from './c/add-app-form/add-app-form.component';
 import { AppListComponent } from './c/app-list/app-list.component';
 import { AppCardComponent } from './c/app-list/app-card/app-card.component';
+import { HeroComponent } from './c/hero/hero.component';
+import { AppDetailsComponent } from './c/app-list/app-details/app-details.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { AppCardComponent } from './c/app-list/app-card/app-card.component';
     AddAppFormComponent,
     AppListComponent,
     AppCardComponent,
+    HeroComponent,
+    AppDetailsComponent,
   ],
   imports: [
     BrowserModule,

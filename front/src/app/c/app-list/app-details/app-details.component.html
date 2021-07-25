@@ -1,0 +1,12 @@
+<section>
+  <div class="app-image">
+    <img [src]="apiUrl + app?.image" [alt]="app?.name" />
+    <div class="status">
+      <i class="ri-checkbox-blank-circle-fill ri-sm {{ app?.status }}"></i>
+    </div>
+  </div>
+  <p class="title-box">{{ app?.name }}</p>
+  <button class="close-box" (click)="onClose()">
+    <i class="ri-close-line ri-xl"></i>
+  </button>
+</section>

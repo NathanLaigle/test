@@ -12,7 +12,10 @@
   border-radius: $radius;
   padding-bottom: 100%;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
+  }
+  &:active {
+    transform: scale(0.98);
   }
   img {
     position: absolute;

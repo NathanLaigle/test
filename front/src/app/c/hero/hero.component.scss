@@ -1,0 +1,18 @@
+@import "../../../assets/css/var.scss", "../../../assets/css/mixin.scss";
+
+section {
+  padding: $containerPadding;
+  padding-top: 0;
+  width: 100%;
+  div {
+    height: 30vh;
+    @include responsive($sm, height, 30vh);
+    @include responsive($md, height, 35vh);
+    @include responsive($lg, height, 40vh);
+    @include responsive($xl, height, 50vh);
+    background-color: rgb(230, 230, 230);
+    background: url("/assets/img/spaceChicken.png") center center / cover;
+
+    border-radius: $radius;
+  }
+}

@@ -1,3 +1,16 @@
+<p>Applications :</p>
 <section>
-  <app-app-card *ngFor="let app of apps" [app]="app"></app-app-card>
+  <app-app-card
+    *ngFor="let app of apps"
+    [app]="app"
+    (click)="onShowAppDetails(app)"
+  ></app-app-card>
 </section>
+
+<div class="app-details-container" (click)="onShowAppDetails()">
+  <app-app-details
+    [app]="currentApp"
+    (close)="onShowAppDetails()"
+    (click)="$event.stopPropagation()"
+  ></app-app-details>
+</div>

@@ -2,7 +2,8 @@
 
 header {
   z-index: 10;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   display: flex;
   flex-wrap: wrap;
@@ -12,4 +13,13 @@ header {
   h2 {
     font-size: 0.8em;
   }
+  background: #fff;
+  // // Apple effect
+  // background: rgba(255, 255, 255, 0.5);
+  // backdrop-filter: blur(1em);
+  // -webkit-backdrop-filter: blur(1em);
+}
+
+.margin {
+  margin-bottom: 5em;
 }

@@ -16,4 +16,19 @@ export class AppListComponent implements OnInit {
     this._app.loadApps();
     this._app.appsObs.subscribe((data) => (this.apps = data));
   }
+
+  currentApp: App;
+
+  onShowAppDetails(app?: App) {
+    const appDetailsEl: HTMLElement = document.querySelector(
+      '.app-details-container'
+    );
+    if (appDetailsEl.style.top == '') {
+      appDetailsEl.style.top = '100%';
+    }
+    appDetailsEl.style.top = appDetailsEl.style.top == '100%' ? '0px' : '100%';
+    if (app) {
+      this.currentApp = app;
+    }
+  }
 }
