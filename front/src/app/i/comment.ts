@@ -1,7 +1,7 @@
 export interface Comment {
   id?: number;
   rating: number;
-  tilte: string;
+  title: string;
   content: string;
   AppId: number;
   UserEmail?: string;

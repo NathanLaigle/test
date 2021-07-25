@@ -16,6 +16,7 @@ import { AppListComponent } from './c/app-list/app-list.component';
 import { AppCardComponent } from './c/app-list/app-card/app-card.component';
 import { HeroComponent } from './c/hero/hero.component';
 import { AppDetailsComponent } from './c/app-list/app-details/app-details.component';
+import { CommentComponent } from './c/app-list/app-details/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AppDetailsComponent } from './c/app-list/app-details/app-details.compon
     AppCardComponent,
     HeroComponent,
     AppDetailsComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

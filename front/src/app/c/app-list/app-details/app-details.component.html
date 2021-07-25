@@ -29,4 +29,8 @@
   <button class="download" (click)="download.click()">
     Download {{ app?.name }}
   </button>
+  <app-comment
+    [comment]="comment"
+    *ngFor="let comment of comments"
+  ></app-comment>
 </section>
