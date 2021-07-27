@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "7f869ea7-cd88-4b17-80ef-b3bda94e54a6",
+		"name": "test-pradeo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "App",
+			"item": [
+				{
+					"name": "Get apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"app"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdGhhbkB0ZXN0LmNvbSIsInBzZXVkbyI6Ik5hdGh5IiwiaWF0IjoxNjI3MTUwNjAxfQ.XK8_RpAbCMY1V4c213VF1zGOIUjGs4r3Kq8Ku84vDfE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "app",
+									"type": "file",
+									"src": "/Users/nathanlaigle/Desktop/pradeoTest/app/Molotov TV en streaming direct replay_v4.2.1_apkpure.com.apk"
+								},
+								{
+									"key": "name",
+									"value": "Molotov",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Une façon radicalement nouvelle de regarder la télévision, maintenant depuis toute l'Europe.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/nathanlaigle/Desktop/pradeoTest/imageApp/molotov-icone.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"app"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an app",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"$2b$10$ngErZHxTzjqYjB/qkjyPM.g5uliwrSaTa9736D84gEa/WZZRXREAa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"app"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an app",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"$2b$10$ucv9KhDePjDvpjQxqLbzROm72MKqkchOiA8IFAPOpJarfSsltqYHm\",\n    \"name\" : \"lalalalala yes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"app"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Create a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"nathan@test.com\",\n    \"pseudo\" : \"Nathy\",\n    \"password\" : \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.bmF0aGFuQHRlc3QuY29t.M6SZ1mfxpcdkluHrMbo0cu7g3z4c3tYVAxr7_Kzq7XU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"nathan3@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/comment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comments related to one app",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Post comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\" : 5,\n    \"title\" : \"Nice app\",\n    \"content\" : \"This app is pretty cool, user experience is a real pleasure.\",\n    \"AppId\" : \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/comment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"nathan@test.com\",\n    \"password\" : \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "virusTotal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.virustotal.com/vtapi/v2/file/scan/:key",
+					"protocol": "https",
+					"host": [
+						"www",
+						"virustotal",
+						"com"
+					],
+					"path": [
+						"vtapi",
+						"v2",
+						"file",
+						"scan",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "d76d04e1ce3cc99daa7507de33d6a0bbb546abdbf255dbe8d7e6d53e07e77ca"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}
