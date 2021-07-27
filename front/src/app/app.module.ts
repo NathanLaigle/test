@@ -18,6 +18,7 @@ import { HeroComponent } from './c/hero/hero.component';
 import { AppDetailsComponent } from './c/app-list/app-details/app-details.component';
 import { CommentComponent } from './c/app-list/app-details/comment/comment.component';
 import { CommentFormComponent } from './c/app-list/app-details/comment-form/comment-form.component';
+import { AppUpdateFormComponent } from './c/app-list/app-details/app-update-form/app-update-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CommentFormComponent } from './c/app-list/app-details/comment-form/comm
     AppDetailsComponent,
     CommentComponent,
     CommentFormComponent,
+    AppUpdateFormComponent,
   ],
   imports: [
     BrowserModule,

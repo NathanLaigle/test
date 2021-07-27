@@ -16,6 +16,7 @@ export class AppDetailsComponent implements OnInit {
 
   @Input() appObs: Observable<App>;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
+  @Output() appChange: EventEmitter<App> = new EventEmitter();
 
   apiUrl: string = environment.apiUrl;
 
@@ -25,13 +26,16 @@ export class AppDetailsComponent implements OnInit {
   commentsCount: number;
   commentsAverage: number;
 
-  commentFormState: boolean = false;
-
   userStatus: boolean;
+
+  isAllowed: boolean = false;
+
+  accordionEl = ['.comment-form-box', '.update-app-form-box'];
 
   ngOnInit(): void {
     this.appObs.subscribe((data) => {
       this.app = data;
+      this.isAllowed = this.app?.UserEmail == this._auth.getUser().email;
       this._comment
         .getAppComment(this.app?.id)
         .subscribe((data: Array<Comment>) => {
@@ -57,19 +61,29 @@ export class AppDetailsComponent implements OnInit {
 
   onClose() {
     this.close.emit();
-    if (this.commentFormState) {
-      this.onShowCommentForm();
-    }
+    this.onShowForm('.comment-form-box', { force: true });
+    this.onShowForm('.update-app-form-box', { force: true });
   }
 
-  onShowCommentForm(): void {
-    const formEl: HTMLElement = document.querySelector('.comment-form-box');
-    if (formEl.style.maxHeight == '' || formEl.style.maxHeight == '0px') {
+  onShowForm(selector, opt = { force: false }): void {
+    const formEl: HTMLElement = document.querySelector(selector);
+    if (
+      (formEl.style.maxHeight == '' || formEl.style.maxHeight == '0px') &&
+      opt.force !== true
+    ) {
       formEl.style.maxHeight = formEl.scrollHeight + 'px';
-      this.commentFormState = true;
     } else {
       formEl.style.maxHeight = '0px';
-      this.commentFormState = false;
     }
+    this.accordionEl.forEach((el) => {
+      if (el !== selector) {
+        const htmlEl: HTMLElement = document.querySelector(el);
+        htmlEl.style.maxHeight = '0px';
+      }
+    });
+  }
+
+  onAppChange(app: App): void {
+    this.appChange.emit(app);
   }
 }

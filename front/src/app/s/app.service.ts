@@ -41,4 +41,12 @@ export class AppService {
       this._auth.setHeader()
     );
   }
+
+  updateApp(app: App): Observable<App> {
+    return this._http.put<App>(
+      environment.apiUrl + environment.endPoints.app,
+      app,
+      this._auth.setHeader()
+    );
+  }
 }

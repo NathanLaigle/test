@@ -38,7 +38,7 @@
       </p>
     </div>
     <div class="button-box" *ngIf="userStatus">
-      <button class="comment" (click)="onShowCommentForm()">
+      <button class="comment" (click)="onShowForm('.comment-form-box')">
         <i class="ri-chat-3-line ri-xl"></i>
       </button>
       <p>
@@ -46,9 +46,24 @@
         Comment
       </p>
     </div>
+    <div class="button-box" *ngIf="isAllowed">
+      <button class="comment" (click)="onShowForm('.update-app-form-box')">
+        <i class="ri-edit-line ri-xl"></i>
+      </button>
+      <p>
+        Edit App<br />
+        info
+      </p>
+    </div>
   </div>
   <div class="comment-form-box">
     <app-comment-form [appObs]="appObs"></app-comment-form>
+  </div>
+  <div class="update-app-form-box">
+    <app-app-update-form
+      [appObs]="appObs"
+      (appChange)="onAppChange($event)"
+    ></app-app-update-form>
   </div>
   <app-comment
     [comment]="comment"

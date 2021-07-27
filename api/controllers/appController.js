@@ -141,7 +141,7 @@ exports.put = async (req, res, next) => {
   try {
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      next({ error: error });
+      return next({ error: error });
     }
     const app = await App.findByPk(req.body.id);
     const newName = req.body.name || app.name;

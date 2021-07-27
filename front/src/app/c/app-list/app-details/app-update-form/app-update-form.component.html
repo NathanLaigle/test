@@ -1,0 +1,15 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmitUpdateForm()">
+  <fieldset>
+    <label for="update-app-name">Name</label>
+    <input type="text" id="update-app-name" formControlName="name" />
+  </fieldset>
+  <fieldset>
+    <label for="update-app-description">Description</label>
+    <textarea
+      rows="10"
+      formControlName="description"
+      id="update-app-description"
+    ></textarea>
+  </fieldset>
+  <button>Update</button>
+</form>

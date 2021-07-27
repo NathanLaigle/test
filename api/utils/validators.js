@@ -30,10 +30,10 @@ exports.appPost = [
   body('description').isString().optional(),
 ];
 
-exports.appDelete = [body('id').isString()];
+exports.appDelete = [body('id').isNumeric()];
 
 exports.appPut = [
-  body('id').isString(),
+  body('id').isNumeric(),
   body('name').isString().optional(),
   body('description').isString().optional(),
 ];

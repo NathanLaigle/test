@@ -11,5 +11,6 @@
     [appObs]="appObs"
     (close)="onShowAppDetails()"
     (click)="$event.stopPropagation()"
+    (appChange)="appSubjet.next($event)"
   ></app-app-details>
 </div>

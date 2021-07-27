@@ -122,7 +122,8 @@ section.comment-form {
   }
 }
 
-.comment-form-box {
+.comment-form-box,
+.update-app-form-box {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   max-height: 0;
